@@ -96,7 +96,12 @@ public class Twitter implements TwitterDAO {
 	}
 
 	public void getUser(String user) {
-		// TODO Auto-generated method stub
+		String query = "select * from twissandra.users where username=?";
+		ResultSet rs = con.getSession().execute(query, user);
+		for (Row row : rs) {
+			System.out.println("Username: " + row.getString("username") + ", Password: " + row.getString("password"));
+		}
+		con.close();
 
 	}
 
