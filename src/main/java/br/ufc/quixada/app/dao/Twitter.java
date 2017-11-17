@@ -102,12 +102,16 @@ public class Twitter implements TwitterDAO {
 			System.out.println("Username: " + row.getString("username") + ", Password: " + row.getString("password"));
 		}
 		con.close();
-
 	}
 
 	public void getAmigos(String user) {
-		// TODO Auto-generated method stub
+		String query = "select * from twissandra.friends where username=?";
+		ResultSet rs = con.getSession().execute(query, user);
+		for (Row row : rs) {
+			System.out.println("Username: " + row.getString("username") + ", Friend: " + row.getString("friend")+ ", Since: " + row.getTimestamp("since"));
 
+		}
+		con.close();
 	}
 
 	public void getSeguidores(String user) {
