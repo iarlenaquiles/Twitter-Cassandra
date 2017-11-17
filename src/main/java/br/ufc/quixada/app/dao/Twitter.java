@@ -108,7 +108,8 @@ public class Twitter implements TwitterDAO {
 		String query = "select * from twissandra.friends where username=?";
 		ResultSet rs = con.getSession().execute(query, user);
 		for (Row row : rs) {
-			System.out.println("Username: " + row.getString("username") + ", Friend: " + row.getString("friend")+ ", Since: " + row.getTimestamp("since"));
+			System.out.println("Username: " + row.getString("username") + ", Friend: " + row.getString("friend")
+					+ ", Since: " + row.getTimestamp("since"));
 
 		}
 		con.close();
