@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.PreparedStatement;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
 
 import br.ufc.quixada.app.conection.Conexao;
 
@@ -82,6 +84,33 @@ public class Twitter implements TwitterDAO {
 		bs.bind(user, follower);
 		con.getSession().execute(bs);
 		con.close();
+	}
+
+	public void getTweet(UUID id) {
+		String query = "select * from twissandra.tweets where tweet_id=?";
+		PreparedStatement ps = con.getSession().prepare(query);
+		BoundStatement bs = new BoundStatement(ps);
+		bs.bind(id);
+		ResultSet rs = con.getSession().execute(query);
+		for (Row row : rs) {
+			System.out.println(row);
+		}
+
+	}
+
+	public void getUser(String user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void getAmigos(String user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void getSeguidores(String user) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
