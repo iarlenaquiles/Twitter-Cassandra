@@ -20,4 +20,6 @@ public interface TwitterDAO {
 	public void removerFriend(String user, String friend);
 
 	public void removerFollowers(String user, String follower);
+	
+	public void getTweet(String id);
 }
