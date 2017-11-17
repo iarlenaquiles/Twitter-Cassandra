@@ -6,6 +6,5 @@ public class InserirTweet {
 	public static void main(String[] args) {
 		Twitter t = new Twitter();
 		t.inserirTweet("Leandro", "Testando com java");
-
 	}
 }
