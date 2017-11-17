@@ -88,14 +88,11 @@ public class Twitter implements TwitterDAO {
 
 	public void getTweet(UUID id) {
 		String query = "select * from twissandra.tweets where tweet_id=?";
-		PreparedStatement ps = con.getSession().prepare(query);
-		BoundStatement bs = new BoundStatement(ps);
-		bs.bind(id);
-		ResultSet rs = con.getSession().execute(query);
+		ResultSet rs = con.getSession().execute(query, id);
 		for (Row row : rs) {
-			System.out.println(row);
+			System.out.println("Body: " + row.getString("body") + ", username: " + row.getString("username"));
 		}
-
+		con.close();
 	}
 
 	public void getUser(String user) {
