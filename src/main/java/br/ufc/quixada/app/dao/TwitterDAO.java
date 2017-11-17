@@ -25,6 +25,6 @@ public interface TwitterDAO {
 	
 	public void getUser(String user);
 	
-	
+	public void getAmigos(String user);
 	
 }
