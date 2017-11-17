@@ -22,4 +22,9 @@ public interface TwitterDAO {
 	public void removerFollowers(String user, String follower);
 	
 	public void getTweet(String id);
+	
+	public void getUser(String user);
+	
+	
+	
 }
